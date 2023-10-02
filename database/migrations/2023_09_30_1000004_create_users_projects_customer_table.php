@@ -15,11 +15,11 @@ class CreateUsersProjectsCustomerTable extends Migration
     {
         Schema::create('user_project_customer', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('id_user')->nullable();
-            $table->unsignedBigInteger('id_project')->nullable();
             $table->boolean('is_owner')->default(true);
             $table->timestamps();
 
+            $table->unsignedBigInteger('id_user')->nullable();
+            $table->unsignedBigInteger('id_project')->nullable();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('set null')
                 ->onUpdate('cascade');
             $table->foreign('id_project')->references('id')->on('projects')->onDelete('set null')
